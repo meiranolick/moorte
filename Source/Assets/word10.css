@@ -125,6 +125,17 @@ div.RTE.Word10	.rteFlyouts > div > div:before{content:' '; margin-right:5px; dis
 					border-right:#e2e4e7 solid 1px; height:100%; width:25px; vertical-align:middle;}
 div.RTE.Word10	.rteFlyouts > div.rteSelected{display:block; position:absolute; }
 
+/* Rte FontColor Palette Flyouts */
+div.RTE.Word10	.rteFlyouts > div > div.rteFontColorHeader{ width:150px; text-align:center; margin-bottom:3px; border-bottom: 3px double #999; }
+div.RTE.Word10	.rteFlyouts > div > div.rteFontColorHeader:before{ content:none; }
+div.RTE.Word10	.rteFlyouts > div > div.rteFontColorsGroup{ width:150px; padding-left:3px; margin-bottom:-4px; }
+div.RTE.Word10	.rteFlyouts > div > div.rteFontColorsGroup:hover{ border:none }
+div.RTE.Word10	.rteFlyouts > div > div.rteFontColorsGroup:before{ content:none }
+div.RTE.Word10	.rteFlyouts > div > div.rteFontColorsGroup > div > a{ margin-right:1px; border: 1px solid black; height:17px; min-width:17px; 
+							border-radius:4px;
+							-moz-box-sizing:border-box; -webkit-box-sizing:border-box; -ms-box-sizing:border-box; box-sizing:border-box; }
+div.RTE.Word10	.rteFlyouts > div > div.rteFontColorsGroup > div > a:hover{  border: 2px solid #3640af; }
+
 /* RteRibbons[>div.rteHomeRibbon div].flyout: Triggers for flyout menus */
 div.RTE.Word10	.flyout{vertical-align:top; margin:3px 0; border:1px solid transparent; height:19px;}
 div.RTE.Word10	.flyout:hover{ border-color:#F5D368; }
@@ -153,7 +164,7 @@ div.RTE.Word10	.stylesCollection{ border:1px solid #c6cacd; overflow-x:hidden; m
 					cursor:pointer; height:52px; margin-right:50px; }
 div.RTE.Word10	.stylesCollection>div{ border:1px solid #fff; float:left; margin:1px; }
 div.RTE.Word10	.stylesCollection>div.rteSelected,
-div.RTE.Word10	.stylesCollection>div:hover{ border-color: #c2a35c; border-radius:3px; linear-gradient("top", #fff 7px, #ffce65 75%, #fff)  }
+div.RTE.Word10	.stylesCollection>div:hover{ border-color: #c2a35c; border-radius:3px; linear-gradient:("top", #fff 7px, #ffce65 75%, #fff)  }
 div.RTE.Word10	.stylesCollection>div>div{ margin:3px; background-color:#fff; padding:3px; width:58px; overflow:hidden; }
 div.RTE.Word10	.stylesCollection>div>div:before{ line-height:24px; content:'Aa Bb Cc Dd Ee Ff Gg'; white-space:nowrap;}
 div.RTE.Word10	.stylesCollection>div>div:after{ text-align:center; display:block; color:#555; font:12px/12px Tahoma;}

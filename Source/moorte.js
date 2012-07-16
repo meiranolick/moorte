@@ -919,7 +919,7 @@ MooRTE.Elements =
    , decreaseFontSize:
 		{ events:
 			{ click: function(){ if (!Browser.firefox) return MooRTE.Utilities.fontsize.pass(-1) }() }
-			/* Fontsize was originally only supposed to accept valuies between 1 - 7.
+			/* Fontsize was originally only supposed to accept values between 1 - 7.
 				It was afterwards changed to accept a much, much greater range of values, but not a single browser has a correct implementation.
 					http://msdn.microsoft.com/en-us/library/ms530759(VS.85).aspx
 					http://msdn.microsoft.com/en-us/library/aa219652(office.11).aspx
@@ -950,9 +950,9 @@ MooRTE.Elements =
 		}
 
 	, sentencecase:{ tag:'div', text:'Sentence case' } 
-	, lowercase:	{ tag:'div', text:'lowercase'}
-	, uppercase:	{ tag:'div', text:'UPPERCASE'}
-	, wordCase:		{ tag:'div', text:'Word Case'}
+	, lowercase:	{ tag:'div', text:'lowercase', events:{click:function(){if (MooRTE.Range.get()) MooRTE.Range.replace(MooRTE.Range.get().toLowerCase());}}}
+	, uppercase:	{ tag:'div', text:'UPPERCASE', events:{click:function(){if (MooRTE.Range.get()) MooRTE.Range.replace(MooRTE.Range.get().toUpperCase());}}}
+	, wordCase:		{ tag:'div', text:'Word Case', events:{click:function(){if (MooRTE.Range.get()) MooRTE.Range.replace(MooRTE.Range.get().toLowerCase().capitalize());}}}
 	, togglecase:	{ tag:'div', text:'tOGGLE cASE'}
 
  	, backColor:
@@ -1016,10 +1016,10 @@ MooRTE.Elements =
 	, pasteMenu:{tag:'span'}
 	, changeCase:
 		{ 'class':'wideIcon', events:
-			{ click:{flyout:['div.caseFlyouts:[sentencecase,lowercase,uppercase,wordcase,togglecase]']} }
+			{ click:{flyout:['div.caseFlyouts:[sentencecase,lowercase,uppercase,wordCase,togglecase]']} }
 		}
-	,fontSize: {tag:'input', type:'text', value:11}
-	,fontFamily:{tag:'input', type:'text', value:'Calibri (Body)'} 
+	, fontSize: {tag:'input', type:'text', value:11}
+	, fontFamily:{tag:'input', type:'text', value:'Calibri (Body)'} 
 	
 
 	// Generic
@@ -1073,9 +1073,9 @@ MooRTE.Word10 = // Word 10 Elements
 			'div.rteFileGroup:[div:[insertHorizontalRule]]' 
 		}
 	, HomeRibbon:
-   	{ tag:'div'
-   	, events:{ load:{addTab:['RibbonTabs', 'HomeTab']} }
-   	, contains: 
+		{ tag:'div'
+		, events:{ load:{addTab:['RibbonTabs', 'HomeTab']} }
+		, contains: 
 			'div.rteClipGroup:[div:[paste32,arrow,span.stacked:[cut,copy,formatPainter]]]\
 			,div.rteFontGroup:[div:[fontFamily,arrow,fontSize,arrow,increaseFontSize,decreaseFontSize\
 				,span.rtedivider,changeCase,span.rtedivider,removeFormat,bold,italic,underline,arrow,strikethrough\
@@ -1101,7 +1101,7 @@ MooRTE.Word10 = // Word 10 Elements
 	, underlineFlyout:  { tag:'div'}
    , bulletsFlyout:    { contains: 'insertorderedlist,insertunorderedlist'}  
    , listFlyout:       { contains: 'insertorderedlist,insertunorderedlist'}
-   , changeCaseFlyout: { contains: 'sentencecase,lowercase,uppercase,wordcase,togglecase'}
+   , changeCaseFlyout: { contains: 'sentencecase,lowercase,uppercase,wordCase,togglecase'}
    , fontFamilyFlyout: { contains: 'div.f_calibri,div.f_tahoma,div.f_comic'}
    , fontSizeFlyout:  
    	{ tag:'div', events:
@@ -1110,6 +1110,36 @@ MooRTE.Word10 = // Word 10 Elements
    			}
    		}
    	}
+   , fontColorFlyout:
+		{ tag:'div'
+		, contains: ''
+		, events: { load: function(e){
+					var colorSets = [['#fff','#f00','#ff0','#0f0','#0ff','#00f','#f0f']
+									,['#ddd','#d11','#dd1','#1d1','#1dd','#11d','#d1d']
+									,['#bbb','#b22','#bb2','#2b2','#2bb','#22b','#b2b']
+									,['#999','#933','#993','#393','#399','#339','#939']
+									,['#777','#744','#774','#474','#477','#447','#747']
+									,['#444','#455','#445','#545','#544','#554','#454']
+									,['#222','#266','#226','#626','#622','#662','#262']
+									,['#000','#077','#007','#707','#700','#770','#070']
+									];
+					this.grab(new Element('div',{text:'Automatic', 'class':'rteFontColorHeader'}).addEvent('click',function(e){
+						MooRTE.Utilities.exec('foreColor','#000;');
+						}));
+					colorSets.each(function(colorSet){
+						var FontColors = new Element('div',{'class':'rteFontColorsGroup'});
+						FontColors.adopt(new Element('div'));
+						colorSet.each(function(color){
+							FontColors.getChildren('div')[0].adopt(new Element(
+								'a',{'html':' ','rel':color,'style':'background-color:'+color}).addEvent('click',function(e){
+									MooRTE.Utilities.exec('foreColor',this.rel);
+									})
+								);
+							this.grab(FontColors);
+							}, this);
+						}, this);
+					} }
+		}
 	}
 Object.merge(MooRTE.Elements,MooRTE.Word10);
 
