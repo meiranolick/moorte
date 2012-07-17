@@ -1110,6 +1110,36 @@ MooRTE.Word10 = // Word 10 Elements
    			}
    		}
    	}
+   , hilightFlyout:
+		{ tag:'div'
+		, contains: ''
+		, events: { load: function(e){
+					var colorSets = [['#fff','#f00','#ff0','#0f0','#0ff','#00f','#f0f']
+									,['#ddd','#d11','#dd1','#1d1','#1dd','#11d','#d1d']
+									,['#bbb','#b22','#bb2','#2b2','#2bb','#22b','#b2b']
+									,['#999','#933','#993','#393','#399','#339','#939']
+									,['#777','#744','#774','#474','#477','#447','#747']
+									,['#444','#455','#445','#545','#544','#554','#454']
+									,['#222','#266','#226','#626','#622','#662','#262']
+									,['#000','#077','#007','#707','#700','#770','#070']
+									];
+					this.grab(new Element('div',{text:'No Hilight', 'class':'rteFontColorHeader'}).addEvent('click',function(e){
+						MooRTE.Utilities.exec((Browser.Engine.gecko ? 'hilitecolor' : 'backcolor'),"#fff",false);
+						}));
+					colorSets.each(function(colorSet){
+						var FontColors = new Element('div',{'class':'rteFontColorsGroup'});
+						FontColors.adopt(new Element('div'));
+						colorSet.each(function(color){
+							FontColors.getChildren('div')[0].adopt(new Element(
+								'a',{'html':' ','rel':color,'style':'background-color:'+color}).addEvent('click',function(e){
+									MooRTE.Utilities.exec((Browser.Engine.gecko ? 'hilitecolor' : 'backcolor'),this.rel,false);
+									})
+								);
+							this.grab(FontColors);
+							}, this);
+						}, this);
+					} }
+		}
    , fontColorFlyout:
 		{ tag:'div'
 		, contains: ''
