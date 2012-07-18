@@ -126,16 +126,16 @@ div.RTE.Word10	.rteFlyouts > div > div:before{content:' '; margin-right:5px; dis
 div.RTE.Word10	.rteFlyouts > div.rteSelected{display:block; position:absolute; }
 
 /* Rte FontColor Palette Flyouts */
-div.RTE.Word10	.rteFlyouts > div > div.rteFontColorHeader{ width:139px; background-color:#eee; text-align:center; border-bottom: 3px double #999; }
-div.RTE.Word10	.rteFlyouts > div > div.rteFontColorHeader:before{ content:none; }
-div.RTE.Word10	.rteFlyouts > div > div.rteFontColorsGroup{ width:139px; background-color:#eee; padding-left:3px; }
-div.RTE.Word10	.rteFlyouts > div > div.rteFontColorsGroup:hover{ border:none }
-div.RTE.Word10	.rteFlyouts > div > div.rteFontColorsGroup:before{ content:none; margin-right:0px; }
-div.RTE.Word10	.rteFlyouts > div > div.rteFontColorsGroup > div{ padding-right:0px; }
-div.RTE.Word10	.rteFlyouts > div > div.rteFontColorsGroup > div > a{ margin-left:1px; border: 1px solid black; height:17px; min-width:17px; 
+div.RTE.Word10	.rteFlyouts > div > div.rteColorHeader{ width:139px; background-color:#eee; text-align:center; border-bottom: 3px double #999; }
+div.RTE.Word10	.rteFlyouts > div > div.rteColorHeader:before{ content:none; }
+div.RTE.Word10	.rteFlyouts > div > div.rteColorsGroup{ width:139px; background-color:#eee; padding-left:3px; }
+div.RTE.Word10	.rteFlyouts > div > div.rteColorsGroup:hover{ border:none }
+div.RTE.Word10	.rteFlyouts > div > div.rteColorsGroup:before{ content:none; margin-right:0px; }
+div.RTE.Word10	.rteFlyouts > div > div.rteColorsGroup > div{ padding-right:0px; }
+div.RTE.Word10	.rteFlyouts > div > div.rteColorsGroup > div > a{ margin-left:1px; border: 1px solid black; height:17px; min-width:17px; 
 							border-radius:4px;
 							-moz-box-sizing:border-box; -webkit-box-sizing:border-box; -ms-box-sizing:border-box; box-sizing:border-box; }
-div.RTE.Word10	.rteFlyouts > div > div.rteFontColorsGroup > div > a:hover{  border: 2px solid #3640af; }
+div.RTE.Word10	.rteFlyouts > div > div.rteColorsGroup > div > a:hover{  border: 2px solid #3640af; }
 
 /* RteRibbons[>div.rteHomeRibbon div].flyout: Triggers for flyout menus */
 div.RTE.Word10	.flyout{vertical-align:top; margin:3px 0; border:1px solid transparent; height:19px;}

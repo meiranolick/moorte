@@ -1123,15 +1123,17 @@ MooRTE.Word10 = // Word 10 Elements
 									,['#222','#266','#226','#626','#622','#662','#262']
 									,['#000','#077','#007','#707','#700','#770','#070']
 									];
-					this.grab(new Element('div',{text:'No Hilight', 'class':'rteFontColorHeader'}).addEvent('click',function(e){
+					this.grab(new Element('div',{text:'No Hilight', 'class':'rteColorHeader'}).addEvent('click',function(e){
+						MooRTE.Utilities.exec("styleWithCSS",true,null);
 						MooRTE.Utilities.exec((Browser.Engine.gecko ? 'hilitecolor' : 'backcolor'),"#fff",false);
 						}));
 					colorSets.each(function(colorSet){
-						var FontColors = new Element('div',{'class':'rteFontColorsGroup'});
+						var FontColors = new Element('div',{'class':'rteColorsGroup'});
 						FontColors.adopt(new Element('div'));
 						colorSet.each(function(color){
 							FontColors.getChildren('div')[0].adopt(new Element(
 								'a',{'html':' ','rel':color,'style':'background-color:'+color}).addEvent('click',function(e){
+									MooRTE.Utilities.exec("styleWithCSS",true,null);
 									MooRTE.Utilities.exec((Browser.Engine.gecko ? 'hilitecolor' : 'backcolor'),this.rel,false);
 									})
 								);
@@ -1153,11 +1155,11 @@ MooRTE.Word10 = // Word 10 Elements
 									,['#222','#266','#226','#626','#622','#662','#262']
 									,['#000','#077','#007','#707','#700','#770','#070']
 									];
-					this.grab(new Element('div',{text:'Automatic', 'class':'rteFontColorHeader'}).addEvent('click',function(e){
-						MooRTE.Utilities.exec('foreColor','#000;');
+					this.grab(new Element('div',{text:'Automatic', 'class':'rteColorHeader'}).addEvent('click',function(e){
+						MooRTE.Utilities.exec('foreColor','#000');
 						}));
 					colorSets.each(function(colorSet){
-						var FontColors = new Element('div',{'class':'rteFontColorsGroup'});
+						var FontColors = new Element('div',{'class':'rteColorsGroup'});
 						FontColors.adopt(new Element('div'));
 						colorSet.each(function(color){
 							FontColors.getChildren('div')[0].adopt(new Element(
